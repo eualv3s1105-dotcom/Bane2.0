@@ -2484,10 +2484,9 @@ splash.style.display="none";
 },350);
 }
 
-setTimeout(
-hideSplash,
-900
-);
+window.addEventListener("load",function(){
+  setTimeout(hideSplash,700);
+});
 
 function initialize(){
 
@@ -2547,12 +2546,8 @@ error
 30000
 );
 
-setTimeout(
-hideSplash,
-700
-);
 }
-
+   
 // Remove versões antigas do Service Worker/cache que possam estar entregando uma versão antiga do app.
 if("serviceWorker" in navigator){
   window.addEventListener("load",async function(){
