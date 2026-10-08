@@ -2459,26 +2459,6 @@ error
 }
    
 // Remove versões antigas do Service Worker/cache que possam estar entregando uma versão antiga do app.
-if("serviceWorker" in navigator){
-  window.addEventListener("load",async function(){
-    try{
-      const regs=await navigator.serviceWorker.getRegistrations();
-      for(const reg of regs){
-        try{ await reg.unregister(); }catch(e){}
-      }
-    }catch(error){
-      console.log("BANE Service Worker cleanup:",error);
-    }
-    try{
-      if(window.caches && caches.keys){
-        const keys=await caches.keys();
-        await Promise.all(keys.map(key=>caches.delete(key)));
-      }
-    }catch(error){
-      console.log("BANE cache cleanup:",error);
-    }
-  });
-}
 
 function navigateFromNav(button){
   if(!button)return;
