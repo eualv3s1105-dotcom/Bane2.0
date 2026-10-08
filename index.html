@@ -792,14 +792,6 @@ transform:translateX(-50%);
 #wallpaper{
 position:fixed;
 }
-}
-
-/* Abertura nunca bloqueia os toques da aplicação. */
-.splash{
-visibility:hidden !important;
-display:none !important;
-pointer-events:none !important;
-}
 
 /* =========================
    AJUSTE FINAL — iPHONE / SAFARI
@@ -907,7 +899,7 @@ font-size:22px;
 <style id="bane-bottom-layer-fix">
 /* ===== BANE: conteúdo desce ~1 cm e cobre a faixa preta inferior ===== */
 #content{
-  bottom:calc(32px + env(safe-area-inset-bottom,0px)) !important;
+  bottom:0 !important;
   z-index:2 !important;
 }
 #content > .screen,
@@ -926,13 +918,7 @@ font-size:22px;
 
 <div id="wallpaper"></div>
 
-<div class="splash" id="splash">
-<div class="splash-content">
-<div class="splash-title">BANE</div>
-<div class="splash-sub">PROTOCOLO PESSOAL</div>
-<div class="loader"><div></div></div>
-</div>
-</div>
+<div id="splash"></div>
 
 <div id="content">
 
@@ -2484,9 +2470,7 @@ splash.style.display="none";
 },350);
 }
 
-window.addEventListener("load",function(){
-  setTimeout(hideSplash,700);
-});
+window.addEventListener("load",hideSplash);
 
 function initialize(){
 
